@@ -1,0 +1,991 @@
+<!-- WEBSITE BY SN1006.com -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1,user-scalable=no">
+	<title>Pa.LaC.E</title>
+	<meta name="author" content="Benjamin Reynolds, Valle Medina, Pa.LaC.E. Basel / London">
+	<meta name="description" content="Benjamin Reynolds, Valle Medina, Pa.LaC.E. Basel / London">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="white-translucent">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@palacepalace">
+	<meta name="twitter:creator" content="@palacepalace">
+	<meta name="twitter:title" content="Pa.LaC.E">
+	<meta name="twitter:description" content="Benjamin Reynolds, Valle Medina, Pa.LaC.E. Basel / London">
+	<meta name="twitter:image" content="">
+	<meta name="og:url" content="palace.studio">
+	<meta name="og:title" content="Pa.LaC.E">
+	<meta name="og:description" content="Benjamin Reynolds, Valle Medina, Pa.LaC.E. Basel / London">
+	<meta name="og:image" content="">
+	<link href="palace.studio/img/favicon.ico" rel="icon">
+	<link href="palace.studio/css/stylesheet.css" rel="stylesheet" media="screen,projection,tv">
+	<script src="palace.studio/js/jquery-3.4.0.js"></script>
+	<script src="palace.studio/js/moment.min.js"></script>
+
+	<!-- <script src="./palace.studio/js/gallery-carousel.js"></script> -->
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+	<![endif]-->
+
+	<!-- Parsing the News Table -->
+	<script>
+		$('#data').each(function () {
+			var text = $(this).find('.amount')[0].nextSibling;
+			text.nodeValue = text.nodeValue.replace('');
+		});
+
+		var spData = null;
+
+		function doData(json) {
+			spData = json.feed.entry;
+		}
+
+		function drawCell(tr, val, isHeader) {
+			var td = $(isHeader ? "<th/>" : "<td/>");
+			tr.append(td);
+			td.append(val);
+			return td;
+		}
+
+		function drawRow(table, rowData, isHeader) {
+			if (rowData == null) return null;
+			if (rowData.length == 0) return null;
+			var tr = $("<tr/>");
+			if (isHeader) tr.addClass("head");
+			table.append(tr);
+			for (var c = 0; c < rowData.length; c++) {
+ drawCell(tr, rowData[c], ((c == 0) || isHeader));
+			}
+			return tr;
+		}
+
+		function drawTable(parent) {
+			var table = $("<table/>");
+			parent.append(table);
+			return table;
+		}
+
+		function readData(parent) {
+			var data = spData;
+			var table = drawTable(parent);
+			var rowData = [];
+			var row = 0;
+
+			for (var r = 0; r < data.length; r++) {
+ var cell = data[r]["gs$cell"];
+ var val = cell["$t"];
+ if (cell.col == 1) {
+ 	drawRow(table, rowData, (row == 1));
+ 	rowData = [];
+ 	row++;
+ }
+ rowData.push(val);
+			}
+			drawRow(table, rowData, (row == 1));
+		}
+		$(document).ready(function () {
+			readData($("#data"));
+		});
+
+		//Hide all rows with "~~~"
+		$(function () { 
+			$('.box-table').each(function () {
+ $(this).html($(this).html().replace(/(~~~)/g, '<span style="display:none;">$1</span>'));
+			});
+		})
+
+		//Parse all URLs to links
+		$(function () {
+			$('.box-table').each(function () {
+ $(this).html($(this).html().replace(/((http|https|ftp):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/g, '<a class="abbr" href="$1">$1</a>'));
+			});
+		})
+
+		//load spreadsheet last on the page (important)
+		$(window).load(function () {
+			$('.box-table').load('/script');
+		});
+	</script>
+	<script type='application/ld+json'>
+{
+ "@context": "http://www.schema.org",
+ "@type": "WebSite",
+ "name": "Pa.LaC.E",
+ "alternateName": "Valle Medina and Benjamin Reynolds",
+ "url": "https://www.palace.studio/"
+}
+ </script>
+	<script type='application/ld+json'>
+{
+ "@context": "http://www.schema.org",
+ "@type": "Organization",
+ "name": "Pa.LaC.E",
+ "url": "https://www.palace.studio/",
+ "description": "Benjamin Reynolds, Valle Medina, Pa.LaC.E. Basel / London.",
+ "address": {
+  "@type": "PostalAddress",
+  "streetAddress": "Royal College of Arts",
+  "addressLocality": "London",
+  "addressRegion": "London",
+  "postalCode": "SW7 2EU",
+  "addressCountry": "UK"
+ },
+ "contactPoint": {
+  "@type": "ContactPoint",
+  "telephone": "+41774976902"
+ }
+}
+ </script>
+
+</head>
+
+<body oncontextmenu="return false">
+
+<!-- Loader -->
+		<div class="wrap">
+		 <div class="spinner">
+			<img width="60" src="palace.studio/img/Image_Loader_O.gif"/>
+		 </div>
+		</div>
+		<script>
+			setTimeout(function(){
+			$(".spinner").fadeOut(400);
+			}, 7000)
+			
+			setTimeout(function(){
+			$(".wrap").fadeOut(800);
+			}, 8000)
+		</script>		
+
+<!-- Main -->
+	<div class="nav-main">
+		<div class="nav01">
+			<table class="table">
+ <h1>
+ 	<tr>
+ 		<td style="padding-right:30px!important;text-align:right;">Valle Medina</td>
+ 		<td style="padding-left:30px!important;text-align:left;">Benjamin Reynolds</td>
+ 	</tr>
+ </h1>
+ <tr>
+ 	<td colspan="2" style="text-align:center;">
+ 		<div id="wrapper">
+ 			<span id="box1" class="box">ζ</span>
+ 			<span id="box2" class="box">ζ</span>
+ 		</div>
+ 	</td>
+ </tr>
+			</table>
+		</div>
+		<div class="nav02">
+			<table class="table">
+ <tr>
+ 	<td colspan="2" style="text-align:center;">Pa.LaC.E</td>
+ </tr>
+ <tr>
+ 	<td style="padding-right:50px;text-align:right;"><a id="modal1">About</a></td>
+ 	<td style="padding-left:50px;text-align:left;"><a id="modal2">News</a></td>
+ </tr>
+			</table>
+		</div>
+	</div>
+
+	<div class="about" id="content">
+		<!-- About -->
+		<div class="modal" id="info">
+			<div class="wrapper">
+ <section class="columns">
+ 	<div class="column">
+ 		<p>The work presented here represents a summary of projects of Basel and London-based architects Benjamin Reynolds and Valle Medina (Pa.LaC.E).</p><p>They currently direct a studio under the guise of <a target='_blank'
+ href='http://ho.ldin.gs/'><em>High Holdings</em></a> at the Royal College of Arts,
+ 			London.</p>
+ 		<p>They are authors of a recent monograph entitled—<em>Paris Hermitage</em>—co-published with N. Weltyk (Cooperative Editions, NY). Available for purchase via:
+ 			<a class='button' target='_blank'
+ href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=87CNLTM7HZ2QA'><span
+ 	class='mainSpan'>Paypal</span>,<span class='hoverSpan'>🛒</span></a>
+ 			<a class='button' target='_blank' href='https://www.printedmatter.org/catalog/46839/'><span
+ 	class='mainSpan'>Printed Matter, NY</span><span class='hoverSpan'>🛒</span></a>, and
+ 			<a class='button' target='_blank'
+ href='https://aabookshop.net/?wpsc-product=paris-hermitage'><span
+ 	class='mainSpan'>Architectural Association, UK</span><span
+ 	class='hoverSpan'>🛒</span></a>
+ 		</p>
+ 	</div>
+ 	<div class="column">
+ 		<p>Valle Medina is a former Geisendorf fellow from the Laboratory for Applied Virtuality at ETH Zürich D-ARCH <em>(summa cum laude)</em>.</p>
+ 		<p>Benjamin Reynolds received a diploma with honours from the Architectural Association, London.</p>
+ 	</div>
+ 	<div class="column">
+ 		<p>For further enquiries:<br><br>
+ 			Veronica Gatt-Csu (Studio Manager)<br>
+ 			vgc@palace.studio<br>
+ 			+41774976902 (CH) / +447541229751 (UK)
+ 		<p>
+ 		<p><a style="-webkit-text-stroke: .2px black;" href="http://instagram.com/pa.lac.e"
+ target="_blank">@pa.lac.e</a></p>
+ 		<p><a style="-webkit-text-stroke: .2px black;" href="http://instagram.com/rca.ads12"
+ target="_blank">@ho.ldin.gs</a></p>
+ 		<p><a style="-webkit-text-stroke: .2px black;" href="#openModal">Project Access 🗝</a></p>
+ 		<p><small>Website by <a href="http://sn1006.com">sn1006.com</a></small><br>
+ 			<small>All Rights Reserved &copy;<span id="date">
+ 	<script>var now = moment().format("YYYY"); $('#date').append(now);</script>
+ </span></small></p>
+ 	</div>
+ </section>
+			</div>
+		</div>
+		<!-- News -->
+		<div class="modal" id="news">
+			<div class="wrapper">
+ <section class="columns">
+ 	<script
+ 		src="https://spreadsheets.google.com/feeds/cells/1emGA09egW3Qc9UdrhlDj6-PpCEq1sqOhI39MUm6pbFo/2/public/values?alt=json-in-script&callback=doData"></script>
+ 	<div class="box-table" style="overflow-x:auto!important;">
+ 		<table id="data"></table>
+ 	</div>
+ 	<div class="topGradient"></div>
+ 	<div class="bottomGradient"></div>
+ </section>
+			</div>
+		</div>
+	</div>
+
+	<!--Access Modal -->
+	<div id="openModal" class="modalDialog">
+		<div>
+			<a href="#close" title="Close" class="close">&times;</a>
+			<br><br>
+			<h2 style="text-align:center">Project Access 🗝</h2>
+			<iframe name="iframe1" id="iframe1" src="accessform.php" frameborder="0" border="0" cellspacing="0"
+ style="border-style: none;width: 100%; height: 80%;"></iframe>
+		</div>
+	</div>
+
+	<!--Main Menu-->
+	<div class="menu">
+		<a id="PastoralComplex" ><span class="project-title">Pastoral Complex<img
+ 	class="svg" src="palace.studio/img/0000_arch.svg"
+ 	alt="Pastoral Complex, Valle Medina, Benjamin Reynolds, Pa.LaC.E" /></span></a>
+		<a id="InBallast"><span class="project-title">In Ballast<img class="svg"
+ 	src="palace.studio/img/0000_art.svg"
+ 	alt="In Ballast, Valle Medina, Benjamin Reynolds, Pa.LaC.E" /></span></a>
+		<a id="Crevasses"><span class="project-title">Crevasses<img
+ 	class="svg" src="palace.studio/img/0000_arch.svg"
+ 	alt="Crevasses, Valle Medina, Benjamin Reynolds, Pa.LaC.E" /></span></a>
+		<a id="HighestGood"><span class="project-title">Highest
+ Good<img class="svg" src="palace.studio/img/0000_art.svg"
+ 	alt="Highest Good, Valle Medina, Benjamin Reynolds, Pa.LaC.E" /></span></a>
+		<a id="MyPasswords"><span class="project-title">My
+ Passwords<img class="svg" src="palace.studio/img/0000_art.svg"
+ 	alt="Highest Good, Valle Medina, Benjamin Reynolds, Pa.LaC.E" /></span></a>
+		<a id="CivicCanyon"><span class="project-title">Civic
+ Canyon<img class="svg" src="palace.studio/img/0000_arch.svg"
+ 	alt="Civic Canyon, Valle Medina, Benjamin Reynolds, Pa.LaC.E" /></span></a>
+		<a id="Hermitage"><span class="project-title">Paris
+ Hermitage<img class="svg" src="palace.studio/img/0000_arch.svg"
+ 	alt="Paris Hermitage, Valle Medina, Benjamin Reynolds, Pa.LaC.E" /></span></a>
+		<a id="Interference"><span
+ class="project-title">Interference<img class="svg" src="palace.studio/img/0000_art.svg"
+ 	alt="Interference, Valle Medina, Benjamin Reynolds, Pa.LaC.E" /></span></a>
+		<a id="ZenithBoil" ><span class="project-title">Zenith Boil<img
+ 	class="svg" src="palace.studio/img/0000_arch.svg"
+ 	alt="Zenith Boil, Valle Medina, Benjamin Reynolds, Pa.LaC.E" /></span></a>
+		<a id="Holdings"><span class="project-title">ho.ldin.gs<img
+ 	class="svg" src="palace.studio/img/0000_web.svg"
+ 	alt="ho.ldin.gs, Valle Medina, Benjamin Reynolds, Pa.LaC.E" /></span></a>
+		<a id="Vineyard"><span class="project-title">House in
+ Vineyard<img class="svg" src="palace.studio/img/0000_arch.svg"
+ 	alt="House in Vineyard, Valle Medina, Benjamin Reynolds, Pa.LaC.E" /></span></a>
+		<a id="G—R"><span class="project-title">G—R<img class="svg"
+ 	src="palace.studio/img/0000_art.svg"
+ 	alt="G—R, Valle Medina, Benjamin Reynolds, Pa.LaC.E" /></span></a>
+		<a id="AlQaliy"><span class="project-title">Al Qalīy<img
+ 	class="svg" src="palace.studio/img/0000_art.svg"
+ 	alt="Al Qalīy, Valle Medina, Benjamin Reynolds, Pa.LaC.E" /></span></a>
+		<a id="KitchenIsland"><span class="project-title">Kitchen
+ Island<img class="svg" src="palace.studio/img/0000_arch.svg"
+ 	alt="Kitchen Island, Valle Medina, Benjamin Reynolds, Pa.LaC.E" /></span></a>
+		<a id="Ancestral"><span class="project-title">Ancestral
+ Seas<img class="svg" src="palace.studio/img/0000_arch.svg"
+ 	alt="Ancestral Seas, Valle Medina, Benjamin Reynolds, Pa.LaC.E" /></span></a>
+		<a id="Forum"><span class="project-title">Forum for the Missing<img
+ 	class="svg" src="palace.studio/img/0000_web.svg"
+ 	alt="Forum for the Missing, Valle Medina, Benjamin Reynolds, Pa.LaC.E" /></span></a>
+		<a id="PS10"><span class="project-title">PS10<img class="svg"
+ 	src="palace.studio/img/0000_art.svg"
+ 	alt="PS10, Valle Medina, Benjamin Reynolds, Pa.LaC.E" /></span></a>
+		<a id="SpaInNature"><span class="project-title">Spa in
+ Nature<img class="svg" src="palace.studio/img/0000_arch.svg"
+ 	alt="Spa in Nature, Valle Medina, Benjamin Reynolds, Pa.LaC.E" /></span></a>
+	</div>
+	<!--Close Menu-->
+
+	<!--Open Gallery-->
+	<div class="gallery">
+
+		<!-- Pastoral Complex -->
+		<div id="gallery1" data-project="PastoralComplex">
+			<a href="#" class="close"></a>
+			<a href="#gallery2" class="next"></a>
+			<img src="palace.studio/img/0141_03.jpg"
+ alt="Pastoral Complex. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">Forthcoming, 2021. La Becque, CH.
+			<h3>Pastoral Complex</h3>
+			</div>
+		</div>
+
+		<div id="gallery2" data-project="PastoralComplex">
+			<a href="#" class="close"></a>
+			<a href="#gallery1" class="prev"></a>
+			<a href="#gallery3" class="next"></a>
+			<img src="palace.studio/img/0141_04.jpg"
+ alt="Pastoral Complex. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">
+ <h3>Pastoral Complex</h3>
+			</div>
+		</div>
+
+		<div id="gallery3" data-project="PastoralComplex">
+			<a href="#" class="close"></a>
+			<a href="#gallery2" class="prev"></a>
+			<a href="#gallery4" class="next"></a>
+			<img src="palace.studio/img/0140_10.jpg"
+ alt="Pastoral Complex. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">
+ <h3>Pastoral Complex</h3>
+			</div>
+		</div>
+
+		<div id="gallery4" data-project="PastoralComplex">
+			<a href="#" class="close"></a>
+			<a href="#gallery3" class="prev"></a>
+			<a href="#gallery5" class="next"></a>
+			<img src="palace.studio/img/0142_01.jpg"
+ alt="Pastoral Complex. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel)." />
+			<div class="caption">
+ <h3>Pastoral Complex</h3>
+			</div>
+		</div>
+
+		<div id="gallery5" data-project="PastoralComplex">
+			<a href="#" class="close"></a>
+			<a href="#gallery4" class="prev"></a>
+			<a href="#gallery6" class="next"></a>
+			<img src="palace.studio/img/0142_02.jpg"
+ alt="Pastoral Complex. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">
+ <h3>Pastoral Complex</h3>
+			</div>
+		</div>
+
+		<!-- In Ballast -->
+		<div id="gallery6" data-project="InBallast">
+			<a href="#" class="close"></a>
+			<a href="#gallery5" class="prev"></a>
+			<a href="#gallery7" class="next"></a>
+			<img src="palace.studio/img/0150_01.jpg"
+ alt="In Ballast. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">A ballast tank, reponsible for the passive translocation of invasive species, here behaving like a gabled-roof lavoir: a gossip space for the laundry. In <a href='https://ausstellungsraum.ch/veranstaltungen/grandfathers-axe/' target='_blank'>'Grandfather's Axe'</a>, Ausstellungsraum Klingental, Basel, 2020.
+ <h3>In Ballast</h3>
+			</div>
+		</div>
+
+		<div id="gallery7" data-project="InBallast">
+			<a href="#" class="close"></a>
+			<a href="#gallery6" class="prev"></a>
+			<a href="#gallery8" class="next"></a>
+			<img src="palace.studio/img/0150_05.jpg"
+ alt="In Ballast. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">
+ <h3>In Ballast</h3>
+			</div>
+		</div>
+
+		<div id="gallery8" data-project="InBallast">
+			<a href="#" class="close"></a>
+			<a href="#gallery7" class="prev"></a>
+			<a href="#gallery9" class="next"></a>
+			<img src="palace.studio/img/0150_06.jpg"
+ alt="In Ballast. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">
+ <h3>In Ballast</h3>
+			</div>
+		</div>
+
+		<div id="gallery9" data-project="InBallast">
+			<a href="#" class="close"></a>
+			<a href="#gallery8" class="prev"></a>
+			<a href="#gallery10" class="next"></a>
+			<img src="palace.studio/img/0150_15.jpg" alt="In Ballast. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">
+			<h3>In Ballast</h3>
+			</div>
+		</div>
+
+		<!-- Crevasses -->
+		<div id="gallery10" data-project="Crevasses">
+			<a href="#" class="close"></a>
+			<a href="#gallery9" class="prev"></a>
+			<a href="#gallery11" class="next"></a>
+			<img src="palace.studio/img/0121_001.jpg" alt="Algorithm locating center of Bibliothek Andreas Züst. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">Some 10,400 books in a library are mapped as latitude and longitude coordinates. The library's center lies 480km southeast of Greenland. The work culminates in a film describing fictional place names deemed as real locations by an algorithm. Supported by Bibliothek Andreas Züst, Oberegg, CH.
+			<h3>Crevasses</h3>
+			</div>
+		</div>
+
+		<div id="gallery11" data-project="Crevasses">
+			<a href="#" class="close"></a>
+			<a href="#gallery10" class="prev"></a>
+			<a href="#gallery12" class="next"></a>
+			<img src="palace.studio/img/0121_004.jpg" alt="Submerged book from the Bibliothek Andreas Züst. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">
+			<h3>Crevasses</h3>
+			</div>
+		</div>
+
+		<!-- Highest Good -->
+		<div id="gallery12" data-project="HighestGood">
+			<a href="#" class="close"></a>
+			<a href="#gallery11" class="prev"></a>
+			<a href="#gallery13" class="next"></a>
+			<img src="palace.studio/img/0123_011.jpg" alt="Highest Good close-up of pigment sculpture. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">An exhibition containing excerpts from a location situated remotely from a city where norms are incomparable to ours, but no less substantiated by a will to progress, the need to share but hindered by violence. 'Highest Good' refers to the physical and performative goals of such a place to which its people aspire. A moving image, three large installations and drawings are disposed in a gallery according to the conceived spatial quadrant of “districts” ∂, ∞, ∏ and ∫. Supported by Magazin, Vienna, AT.<h3>Highest Good</h3>
+			</div>
+		</div>
+
+		<div id="gallery13" data-project="HighestGood">
+			<a href="#" class="close"></a>
+			<a href="#gallery12" class="prev"></a>
+			<a href="#gallery14" class="next"></a>
+			<img src="palace.studio/img/0123_021.jpg" alt="Melgroube pigment sculpture. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">
+			<h3>Highest Good</h3>
+			</div>
+		</div>
+
+		<div id="gallery14" data-project="HighestGood">
+			<a href="#" class="close"></a>
+			<a href="#gallery13" class="prev"></a>
+			<a href="#gallery15" class="next"></a>
+			<img src="palace.studio/img/0123_026.jpg" alt="Highest Good exhibition, Vienna, Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">
+			<h3>Highest Good</h3>
+			</div>
+		</div>
+
+		<div id="gallery15" data-project="HighestGood">
+			<a href="#" class="close"></a>
+			<a href="#gallery14" class="prev"></a>
+			<a href="#gallery16" class="next"></a>
+			<img src="palace.studio/img/0123_003d.jpg" alt="Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">
+			<h3>Highest Good</h3>
+			</div>
+		</div>
+
+		<!-- My Passwords -->
+		<div id="gallery16" data-project="MyPasswords">
+			<a href="#" class="close"></a>
+			<a href="#gallery15" class="prev"></a>
+			<a href="#gallery17" class="next"></a>
+			<img src="palace.studio/img/0143_01.jpg" alt="My Passwords. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">
+			<h3>My Passwords</h3>
+			</div>
+		</div>
+
+		<!-- Civic Canyon -->
+		<div id="gallery17" data-project="CivicCanyon">
+			<a href="#" class="close"></a>
+			<a href="#gallery16" class="prev"></a>
+			<a href="#gallery18" class="next"></a>
+			<img src="palace.studio/img/0099_011.jpg" alt="Civic Canyon. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">In Santa Barbara, California is a pool with a material concentrated with a selection of salts so dense that only extremophiles can grow. On it is the working space of a citizen whose city has removed any meaningful bodily and public interaction from his existence. “Atelier” is part of the larger work “Civic Canyon” which documents spaces that he imagines in his mind “as a way out” of such a city. Supported by Kone Foundation, Helsinki, FI.
+			<h3>Civic Canyon</h3>
+			</div>
+		</div>
+
+		<div id="gallery18" data-project="CivicCanyon">
+			<a href="#" class="close"></a>
+			<a href="#gallery17" class="prev"></a>
+			<a href="#gallery19" class="next"></a>
+			<img src="palace.studio/img/0099_005.jpg" alt="Civic Canyon. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">
+			<h3>Civic Canyon</h3>
+			</div>
+		</div>
+
+		<!-- Paris Hermitage -->
+		<div id="gallery19" data-project="Hermitage">
+			<a href="#" class="close"></a>
+			<a href="#gallery18" class="prev"></a>
+			<a href="#gallery20" class="next"></a>
+			<img src="palace.studio/img/0063_048.jpg" alt="Paris Hermitage. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">A Monograph. Paris Hermitage: a building as a large temporal oscillator yields time in material (fused Quartz) and realigns the wakefulness and sleep patterns of those whose life-rhythm has been pulverised. Co-published with N. Weltyk (Cooperative Editions, NY).<br>
+			<div style='line-height:100%;font-size:0.8em;'><br>ISBN: 978-0-9981008-0-7.<br>2016, 240 pages, Offset print<br>6.5 × 9.6 in. (16.5 cm x 24.4 cm), 600 g<br>First edition, 300 copies<br>$27 US + shipping<br><br></div>Purchase via:<br>
+		<a class='button' target='_blank'
+			href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=87CNLTM7HZ2QA'><span
+				class='mainSpan'>Paypal</span>,<span class='hoverSpan'>🛒</span></a>
+		<a class='button' target='_blank' href='https://www.printedmatter.org/catalog/46839/'><span
+				class='mainSpan'>Printed Matter, NY</span><span class='hoverSpan'>🛒</span></a><br>
+		<a class='button' target='_blank' href='https://aabookshop.net/?wpsc-product=paris-hermitage'><span
+				class='mainSpan'>Architectural Association, UK</span><span class='hoverSpan'>🛒</span></a>
+		<h3>Paris Hermitage</h3>
+			</div>
+		</div>
+
+		<div id="gallery20" data-project="Hermitage">
+			<a href="#" class="close"></a>
+			<a href="#gallery19" class="prev"></a>
+			<a href="#gallery21" class="next"></a>
+			<img src="palace.studio/img/0063_045.jpg" alt="Paris Hermitage. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">Purchase via:<br>
+ <a class='button' target='_blank'
+ 	href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=87CNLTM7HZ2QA'><span
+ 		class='mainSpan'>Paypal</span>,<span class='hoverSpan'>🛒</span></a>
+ <a class='button' target='_blank' href='https://www.printedmatter.org/catalog/46839/'><span
+ 		class='mainSpan'>Printed Matter, NY</span><span class='hoverSpan'>🛒</span></a><br>
+ <a class='button' target='_blank' href='https://aabookshop.net/?wpsc-product=paris-hermitage'><span
+ 		class='mainSpan'>Architectural Association, UK</span><span class='hoverSpan'>🛒</span></a>
+ <h3>Paris Hermitage</h3>
+			</div>
+		</div>
+
+		<div id="gallery21" data-project="Hermitage">
+			<a href="#" class="close"></a>
+			<a href="#gallery20" class="prev"></a>
+			<a href="#gallery22" class="next"></a>
+			<img src="palace.studio/img/0063_050.jpg" alt="Paris Hermitage. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">Purchase via:<br>
+ <a class='button' target='_blank'
+ 	href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=87CNLTM7HZ2QA'><span
+ 		class='mainSpan'>Paypal</span>,<span class='hoverSpan'>🛒</span></a>
+ <a class='button' target='_blank' href='https://www.printedmatter.org/catalog/46839/'><span
+ 		class='mainSpan'>Printed Matter, NY</span><span class='hoverSpan'>🛒</span></a><br>
+ <a class='button' target='_blank' href='https://aabookshop.net/?wpsc-product=paris-hermitage'><span
+ 		class='mainSpan'>Architectural Association, UK</span><span class='hoverSpan'>🛒</span></a>
+ <h3>Paris Hermitage</h3>
+			</div>
+		</div>
+
+		<div id="gallery22" data-project="Hermitage">
+			<a href="#" class="close"></a>
+			<a href="#gallery21" class="prev"></a>
+			<a href="#gallery23" class="next"></a>
+			<img src="palace.studio/img/0063_033.jpg" alt="Paris Hermitage. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">Purchase via:<br>
+ <a class='button' target='_blank'
+ 	href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=87CNLTM7HZ2QA'><span
+ 		class='mainSpan'>Paypal</span>,<span class='hoverSpan'>🛒</span></a>
+ <a class='button' target='_blank' href='https://www.printedmatter.org/catalog/46839/'><span
+ 		class='mainSpan'>Printed Matter, NY</span><span class='hoverSpan'>🛒</span></a><br>
+ <a class='button' target='_blank' href='https://aabookshop.net/?wpsc-product=paris-hermitage'><span
+ 		class='mainSpan'>Architectural Association, UK</span><span class='hoverSpan'>🛒</span></a>
+ <h3>Paris Hermitage</h3>
+			</div>
+		</div>
+
+		<div id="gallery23" data-project="Hermitage">
+			<a href="#" class="close"></a>
+			<a href="#gallery22" class="prev"></a>
+			<a href="#gallery24" class="next"></a>
+			<img src="palace.studio/img/0063_035.jpg" alt="Paris Hermitage. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">Purchase via:<br>
+ <a class='button' target='_blank'
+ 	href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=87CNLTM7HZ2QA'><span
+ 		class='mainSpan'>Paypal</span>,<span class='hoverSpan'>🛒</span></a>
+ <a class='button' target='_blank' href='https://www.printedmatter.org/catalog/46839/'><span
+ 		class='mainSpan'>Printed Matter, NY</span><span class='hoverSpan'>🛒</span></a><br>
+ <a class='button' target='_blank' href='https://aabookshop.net/?wpsc-product=paris-hermitage'><span
+ 		class='mainSpan'>Architectural Association, UK</span><span class='hoverSpan'>🛒</span></a>
+ <h3>Paris Hermitage</h3>
+			</div>
+		</div>
+
+		<div id="gallery24" data-project="Hermitage"> 
+			<a href="#" class="close"></a>
+			<a href="#gallery23" class="prev"></a>
+			<a href="#gallery25" class="next"></a>
+			<img src="palace.studio/img/0063_042.jpg" alt="Paris Hermitage. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">Purchase via:<br>
+ <a class='button' target='_blank'
+ 	href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=87CNLTM7HZ2QA'><span
+ 		class='mainSpan'>Paypal</span>,<span class='hoverSpan'>🛒</span></a>
+ <a class='button' target='_blank' href='https://www.printedmatter.org/catalog/46839/'><span
+ 		class='mainSpan'>Printed Matter, NY</span><span class='hoverSpan'>🛒</span></a><br>
+ <a class='button' target='_blank' href='https://aabookshop.net/?wpsc-product=paris-hermitage'><span
+ 		class='mainSpan'>Architectural Association, UK</span><span class='hoverSpan'>🛒</span></a>
+ <h3>Paris Hermitage</h3>
+			</div>
+		</div>
+
+		<div id="gallery25" data-project="Hermitage">
+			<a href="#" class="close"></a>
+			<a href="#gallery24" class="prev"></a>
+			<a href="#gallery26" class="next"></a>
+			<img src="palace.studio/img/0063_043.jpg" alt="Paris Hermitage. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">Purchase via:<br>
+ <a class='button' target='_blank'
+ 	href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=87CNLTM7HZ2QA'><span
+ 		class='mainSpan'>Paypal</span>,<span class='hoverSpan'>🛒</span></a>
+ <a class='button' target='_blank' href='https://www.printedmatter.org/catalog/46839/'><span
+ 		class='mainSpan'>Printed Matter, NY</span><span class='hoverSpan'>🛒</span></a><br>
+ <a class='button' target='_blank' href='https://aabookshop.net/?wpsc-product=paris-hermitage'><span
+ 		class='mainSpan'>Architectural Association, UK</span><span class='hoverSpan'>🛒</span></a>
+ <h3>Paris Hermitage</h3>
+			</div>
+		</div>
+
+		<div id="gallery26" data-project="Hermitage">
+			<a href="#" class="close"></a>
+			<a href="#gallery25" class="prev"></a>
+			<a href="#gallery27" class="next"></a>
+			<img src="palace.studio/img/0063_047.jpg" alt="Paris Hermitage. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">Purchase via:<br>
+ <a class='button' target='_blank'
+ 	href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=87CNLTM7HZ2QA'><span
+ 		class='mainSpan'>Paypal</span>,<span class='hoverSpan'>🛒</span></a>
+ <a class='button' target='_blank' href='https://www.printedmatter.org/catalog/46839/'><span
+ 		class='mainSpan'>Printed Matter, NY</span><span class='hoverSpan'>🛒</span></a><br>
+ <a class='button' target='_blank' href='https://aabookshop.net/?wpsc-product=paris-hermitage'><span
+ 		class='mainSpan'>Architectural Association, UK</span><span class='hoverSpan'>🛒</span></a>
+ <h3>Paris Hermitage</h3>
+			</div>
+		</div>
+
+		<!-- Interference -->
+		<div id="gallery27" data-project="Interference">
+			<a href="#" class="close"></a>
+			<a href="#gallery26" class="prev"></a>
+			<a href="#gallery28" class="next"></a>
+			<img src="palace.studio/img/0066_003.jpg" alt="Interference. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">An architect carving space. The carving is translated in realtime to digital coordinates. The stone and the coordinates are considered interchangable. Supported by Van Eyck Academie
+ and Mondriaan Funds, NL.<h3>Interference</h3>
+			</div>
+		</div>
+
+		<div id="gallery28" data-project="Interference">
+			<a href="#" class="close"></a>
+			<a href="#gallery27" class="prev"></a>
+			<a href="#gallery29" class="next"></a>
+				<video preload="none" autoplay loop muted="muted">
+				 <source src="palace.studio/img/0063_999_05.webm" type="video/webm">
+				 <source src="palace.studio/img/0063_999_05.mp4" type="video/mp4">
+				 Your browser doesn't support HTML5 video tag.
+				</video>
+				<div class="caption">
+			<h3>Interference</h3>
+			</div>
+		</div>
+
+		<div id="gallery29" data-project="Interference">
+			<a href="#" class="close"></a>
+			<a href="#gallery28" class="prev"></a>
+			<a href="#gallery30" class="next"></a>
+			<video preload="none" autoplay loop muted="muted">
+			 <source src="palace.studio/img/0063_999_06.webm" type="video/webm">
+			 <source src="palace.studio/img/0063_999_06.mp4" type="video/mp4">
+			 <source src="" type="video/webm">
+			 Your browser doesn't support HTML5 video tag.
+						</video>
+			<div class="caption">
+				<h3>Interference</h3>
+			</div>
+		</div>
+
+		<!-- Zenith Boil -->
+		<div id="gallery30" data-project="ZenithBoil">
+			<a href="#" class="close"></a>
+			<a href="#gallery29" class="prev"></a>
+			<a href="#gallery31" class="next"></a>
+			<img src="palace.studio/img/0123_015.jpg" alt="Lung from 'Zenith Boil', Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">What we see is always mediated by a turbulent atmosphere. Using a 'scintillator', the forthcoming publication 'Zenith Boil' captures the atmosphere within architectural interiors as illustrated by deviated pixels, painted anew, consequently showing air that is measurable.<h3>Zenith Boil</h3>
+			</div>
+		</div>
+
+		<div id="gallery31" data-project="ZenithBoil">
+			<a href="#" class="close"></a>
+			<a href="#gallery30" class="prev"></a>
+			<a href="#gallery32" class="next"></a>
+			<img src="palace.studio/img/0125_06.jpg" alt="Lung from 'Zenith Boil', Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">Ceramic/Rubber lung to breathe into. Warm air results in scintillating the	architectural rendering.<h3>Zenith Boil</h3>
+			</div>
+		</div>
+
+		<div id="gallery32" data-project="ZenithBoil">
+			<a href="#" class="close"></a>
+			<a href="#gallery31" class="prev"></a>
+			<a href="#gallery33" class="next"></a>
+			<img src="palace.studio/img/0125_14.png" style="box-shadow:none;" alt="Zenith Boil, Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">
+ <h3>Zenith Boil</h3>
+			</div>
+		</div>
+
+		<div id="gallery33" data-project="ZenithBoil">
+			<a href="#" class="close"></a>
+			<a href="#gallery32" class="prev"></a>
+			<a href="#gallery34" class="next"></a>
+				<video preload="none" autoplay loop muted="muted">
+				 <source src="palace.studio/img/0125_10.webm" type="video/webm">
+				 <source src="palace.studio/img/0125_10.mp4" type="video/mp4">
+				 Your browser doesn't support HTML5 video tag.</video>
+			<div class="caption">
+			<h3>Zenith Boil</h3>
+			</div>
+		</div>
+
+		<!-- ho.ldin.gs -->
+		<div id="gallery34" data-project="Holdings">
+			<a href="#" class="close"></a>
+			<a href="#gallery33" class="prev"></a>
+			<a href="#gallery35" class="next"></a>
+				<img src="palace.studio/img/0129_002.png" style="box-shadow:none; alt="High Holdings website. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+				<!--<video preload="none" style="box-shadow:none;" autoplay loop muted="muted">
+				 <source src="palace.studio/img/0129_002.webm" type="video/webm">
+				 <source src="palace.studio/img/0129_002.mp4" type="video/mp4">
+				 Your browser doesn't support HTML5 video tag.
+				</video>-->
+			<div class="caption">High Holdings is a seasonal space at the Royal College of Arts, London, concerned with our sensibilities to discern, when sociotechnical constructs are divorcing themselves from our capacity to comprehend. Bound together under the logic of a holding company: an entity of entities, its operation offers novel planes of experimentation and critique. High Holdings' activities are mirrored and complemented on its website. <br><br>Visit <a href='http://ho.ldin.gs/' target='_blank'>ho.ldin.gs</a>.<h3>ho.ldin.gs</h3>
+			</div>
+		</div>
+
+		<!-- House in Vineyard -->
+		<div id="gallery35" data-project="Vineyard">
+			<a href="#" class="close"></a>
+			<a href="#gallery34" class="prev"></a>
+			<a href="#gallery36" class="next"></a>
+			<img src="palace.studio/img/0089_006.jpg" alt="House in Vineyard. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">Between the rail and a vineyard by Lake Zürich, a garden evokes the pleasures of Paradise—from the Persian <em>paradeisos</em> meaning “enclosure”. An uninterrupted surface starts as a roof terrace and folds into an <em>impluvium</em> balustrade, bench, mantelpiece, daybed and kitchen bench.<h3>House in Vineyard</h3>
+			</div>
+		</div>
+
+		<!-- G—R -->
+		<div id="gallery36" data-project="G-R">
+			<a href="#" class="close"></a>
+			<a href="#gallery35" class="prev"></a>
+			<a href="#gallery37" class="next"></a>
+			<img src="palace.studio/img/0096_011.jpg" alt="Geodesic Rectangle. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">The surface is a segment cut out from a large voided spheroid. Made from grade A American Bureau of Shipping (ABS) steel with adequate fracture toughness, it is coated by a nanometer light-absorbing optical film of evaporated germanium (Ge) of 15 nm thickness making the metal dark blue to the eye. Exhibited at Jørn Utzon's Can Lis. Supported by the Danish Arts Foundation, DK. <h3>G—R</h3>
+			</div>
+		</div>
+
+		<!-- Al Qalīy -->
+		<div id="gallery37" data-project="AlQaliy">
+			<a href="#" class="close"></a>
+			<a href="#gallery36" class="prev"></a>
+			<a href="#gallery38" class="next"></a>
+			<img src="palace.studio/img/0097_008.jpg" alt="Al Qalīy. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">During his time in al-Kufah, Iraq. Jabir ibn Hayyan popularised the use of al qaliy, meaning “ashes of saltwort”; its combination with animal fat (tallow) became the prevailing technique in soap production for the next 1100 years. The length/width dimensions of 'Where I Frequent (Yearly Condenses)' are a hundredth of the scale of the original al-Kūfah mosque in Iraq, where Jabir ibn Hayyan used to pray daily. It is sprayed with mist every four days for one minute (60mm): the yearly rainfall of al-Kufah. Supported by Villa Strauli, CH.<h3>Al Qalīy</h3>
+			</div>
+		</div>
+
+		<!-- Kitchen Island -->
+		<div id="gallery38" data-project="KitchenIsland">
+			<a href="#" class="close"></a>
+			<a href="#gallery37" class="prev"></a>
+			<a href="#gallery39" class="next"></a>
+			<img src="palace.studio/img/0116_002.jpg" alt="Kitchen Island. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">Expanding upon the existing network of roads, waterways and bridges in a farm in Jiangsu province in China, Kitchen Island is a quasi-natural composite of hardened earth mounds that suggest the transit areas, spaces of the building, and equally act as the structural foundations of a hovering roof. The resulting profile of the project is so flat that it could be remotely perceived as a line of sunlight.<h3>Kitchen Island</h3>
+			</div>
+		</div>
+
+		<!-- Ancestral Seas -->
+		<div id="gallery39" data-project="Ancestral">
+			<a href="#" class="close"></a>
+			<a href="#gallery38" class="prev"></a>
+			<a href="#gallery40" class="next"></a>
+			<img src="palace.studio/img/0075_003.jpg" alt="Ancestral Seas. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">A large volume of light is tied to the edge of a volcanic lake and responds to the location’s particular daylight radiation. The volume changes its form because its surface is made from ultra-thin quartz tubes (capillaries) that can open and close their tips to store hot air as the temperature from the lake rises.<h3>Ancestral Seas</h3>
+			</div>
+		</div>
+
+		<!-- Forum for the Missing -->
+		<div id="gallery40" data-project="Forum">
+			<a href="#" class="close"></a>
+			<a href="#gallery39" class="prev"></a>
+			<a href="#gallery41" class="next"></a>
+			<img src="palace.studio/img/0119_005.jpg" alt="Forum for the Missing. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">Forum of the Missing takes delight in reproducing the work a computer is unaware that it is doing, since an image is read as objectified matter. An online crowdworking platform of virtual individual “mechanical workers” is used to recruit a team of over 5,000 contributors. Contributors are invited to analyse one stock image each of a sky over France and characterise what shapes they see in the clouds. Derived from the subjective capacities of the virtual workers, a collection of objects is produced and arranged to embody a forum.<h3>Forum for the Missing</h3>
+			</div>
+		</div>
+
+		<!-- PS10 -->
+		<div id="gallery41" data-project="PS10">
+			<a href="#" class="close"></a>
+			<a href="#gallery40" class="prev"></a>
+			<a href="#gallery42" class="next"></a>
+			<img src="palace.studio/img/0120_006.jpg" alt="PS10. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">What is the cost of the energy of a work? PS10 was enacted at a solar collector outside the Abengoa Solar Power Plant in Seville, Spain, at dawn. The collector replicates the sun 624 times. During the night, a painting of the sun on a thick sheet of PET plastic was placed on top of one of the heliostat receivers. 54 mins after sunrise the sheet melted and fell to the ground, blocking potential energy gains of the collector. The painting cost 1.46 Megawatts. The painting's outline evident in the graph of the collector's daily output.<h3>PS10</h3>
+			</div>
+		</div>
+
+		<div id="gallery42" data-project="PS10">
+			<a href="#" class="close"></a>
+			<a href="#gallery41" class="prev"></a>
+			<a href="#gallery43" class="next"></a>
+			<img src="palace.studio/img/0120_004.jpg" alt="PS10. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">
+ <h3>PS10</h3>
+			</div>
+		</div>
+
+		<!-- Spa in Nature -->
+		<div id="gallery43" data-project="SpaInNature">
+			<a href="#" class="close"></a>
+			<a href="#gallery42" class="prev"></a>
+			<a href="#gallery44" class="next"></a>
+			<img src="palace.studio/img/0110_004.jpg" alt="Spa in Nature. Benjamin Reynolds and Valle Medina (Pa.LaC.E, Basel / London)." />
+			<div class="caption">A fragment of volcanic rock from the Akan caldera is set into a site in Hokkaido, Japan. The gesture of displacing a landscape of volcanic rock forms the basis of the spa.<h3>Spa in Nature</h3>
+			</div>
+		</div>
+
+	</div><!-- Close Gallery -->
+
+	<!-- Hover Images -->
+	<div class="PastoralComplex hover"><img class="icon" src="palace.studio/img/0141_03.jpg" /></div>
+	<div class="InBallast hover"><img class="icon" src="palace.studio/img/0150_01.jpg" /></div>
+	<div class="Crevasses hover"><img class="icon" src="palace.studio/img/0121_001.jpg" /></div>
+	<div class="HighestGood hover"><img class="icon" src="palace.studio/img/0123_011.jpg" /></div>
+	<div class="MyPasswords hover"><img class="icon" src="palace.studio/img/0143_01.jpg" /></div>
+	<div class="CivicCanyon hover"><img class="icon" src="palace.studio/img/0099_011.jpg" /></div>
+	<div class="Hermitage hover"><img class="icon" src="palace.studio/img/0063_048.jpg" /></div>
+	<div class="Interference hover"><img class="icon" src="palace.studio/img/0066_003.jpg" /></div>
+	<div class="ZenithBoil hover"><img class="icon" src="palace.studio/img/0123_015.jpg" /></div>
+	<div class="Holdings hover"><img class="icon" src="palace.studio/img/0129_001.jpg" /></div>
+	<div class="Vineyard hover"><img class="icon" src="palace.studio/img/0089_006.jpg" /></div>
+	<div class="G—R hover"><img class="icon" src="palace.studio/img/0096_011.jpg" /></div>
+	<div class="AlQaliy hover"><img class="icon" src="palace.studio/img/0097_008.jpg" /></div>
+	<div class="KitchenIsland hover"><img class="icon" src="palace.studio/img/0116_002.jpg" /></div>
+	<div class="Ancestral hover"><img class="icon" src="palace.studio/img/0075_003.jpg" /></div>
+	<div class="Forum hover"><img class="icon" src="palace.studio/img/0119_005.jpg" /></div>
+	<div class="PS10 hover"><img class="icon" src="palace.studio/img/0120_006.jpg" /></div>
+	<div class="SpaInNature hover"><img class="icon" src="palace.studio/img/0110_004.jpg" /></div>
+
+	<!-- Gallery links auto generator -->
+	<script src="./palace.studio/js/gallery-carousel.js"></script>
+
+	<!--Preview Hover-->
+	<script>
+		$(".menu a").mouseenter(function () {
+			var id = $(this).attr("id");
+			$("." + id).fadeIn();
+		})
+
+		$(".menu a").mouseleave(function () {
+			var id = $(this).attr("id");
+			$(".hover").hide();
+		})
+	</script>
+
+	<!--Modal Popup-->
+	<script> 
+		function modalClose() { if (location.hash == '#openModal') { location.hash = ''; } } document.addEventListener('keyup', function (e) { if (e.keyCode == 27) { modalClose(); } }); var modal = document.querySelector('#openModal'); modal.addEventListener('click', function (e) { modalClose(); }, false); modal.children[0].addEventListener('click', function (e) { e.stopPropagation(); }, false);
+	</script>
+
+	<script>
+		$(".nav-main").hover(function () {
+			$(".nav01,.nav02").fadeToggle(500);
+		});
+	</script>
+
+	<script>
+		//flip "ζ"
+		var fadeinBox = $("#box2");
+		var fadeoutBox = $("#box1");
+		function fade() {
+			fadeinBox.stop(true, true).fadeIn(1000);
+			fadeoutBox.stop(true, true).fadeOut(1000, function () {
+ var temp = fadeinBox;
+ fadeinBox = fadeoutBox;
+ fadeoutBox = temp;
+ setTimeout(fade, 300);
+			});
+		}
+		fade();
+	</script>
+
+	<!--Return Icon-->
+	<div class="return"><a href='#'><img class="return-svg" src="palace.studio/img/0000_close.svg"
+ alt="Valle Medina, Benjamin Reynolds, Pa.LaC.E" /></a></div>
+
+	<script>//enter tag in browser
+	
+		window.onhashchange = function() { 
+			
+			if(location.hash.toString() === "#" || location.hash.toString() === "")
+ {
+ 	$(".return").fadeOut(1000);
+ }
+ else{
+ 	$(".return").fadeIn(1000);
+ }
+	  }
+   
+	  if (document.location.href.search("gallery")!=-1){
+
+ $(".return").fadeIn(1000);
+	  }
+	</script>
+	<script>//esc shows menu&nav hides return
+		$(document).keyup(function (e) {
+			if (e.which == 27) {
+ $(".return,.modal").fadeOut(500);
+ $(".menu,.nav-main").fadeIn(1000);
+			}
+		});
+	</script>
+	<script>//if click x show/hide y
+		$(".menu a").click(function () {
+			$(".return").fadeIn(1000);
+		});
+	</script>
+	<script>//vice-versa
+		$(".return").click(function () {
+			$(".menu,.nav-main").fadeIn(1000);
+			$(".return,.modal").fadeOut(1000);
+		})
+	</script>
+	<script>//click info
+		$('#modal1').click(function () {
+			$(".return,#info").fadeIn(1000);
+			$(".menu,.nav-main,.hover").fadeOut(250);
+		})
+	</script>
+	<script>//click news
+		$('#modal2').click(function () {
+			$(".return,#news").fadeIn(1000);
+			$(".menu,.nav-main,.hover").fadeOut(250);
+		})
+	</script>
+
+
+	<!-- Lightbox -->
+	<script src="palace.studio/js/gallery.js"></script>
+
+	<!-- Force JSON links to open in new page -->
+	<script>
+		$('.box-table').on('click', 'a', function (e) {
+			e.preventDefault();
+			var url = $(this).attr('href');
+			window.open(url, '_blank');
+		});
+	</script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-3413039-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-3413039-2');
+	</script>
+
+</body>
+
+</html>
